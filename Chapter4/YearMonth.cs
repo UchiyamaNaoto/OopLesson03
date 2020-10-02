@@ -14,7 +14,6 @@ namespace Chapter4 {
             Year = year;
             Month = month;
         }
-
         // 4.1.2
         // Is21Centuryプロパティを追加
         public bool Is21Century {
@@ -22,7 +21,6 @@ namespace Chapter4 {
                 return 2001 <= Year && Year <= 2100;
             }
         }
-
         // 4.1.3
         // AddOneMonth()メソッドを追加
         public YearMonth AddOneMonth() {
@@ -33,7 +31,6 @@ namespace Chapter4 {
                 return new YearMonth(this.Year, this.Month + 1);
             }
         }
-
         // 4.1.4
         // ToString()メソッドのオーバーライド
         public override string ToString() {
