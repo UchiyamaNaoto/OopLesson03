@@ -24,8 +24,15 @@ namespace Chapter6 {
             };
 
             //すべての書籍から「C#」の文字がいくつあるかをカウントする
-            
-
+            int count = 0;
+            foreach (var book in books.Where(b => b.Title.Contains("C#"))) {
+                for (int i = 0; i < book.Title.Length - 1; i++) {
+                    if ((book.Title[i] == 'C') && (book.Title[i + 1] == '#')) {
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine($"文字列「C#」の個数は{count}です。");
 
             #region Driver
             Exercise2_1(books);
