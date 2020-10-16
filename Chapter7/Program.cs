@@ -9,34 +9,27 @@ using System.Threading.Tasks;
 namespace Chapter7 {
     class Program {
         static void Main(string[] args) {
-            //var lines = File.ReadAllLines("sample.txt");
-            //var we = new WordsExtractor(lines);
-            //foreach (var word in we.Extract()) {
-            //    Console.WriteLine(word);
-            //}
-            DuplicateKeySample();
+            var text = "Cozy lummox gives smart squid who asks for job pen";
+            Exercise1_1(text);  //問題7.1.1
         }
-        static public void DuplicateKeySample() {
-            // ディクショナリの初期化
-            var dict = new Dictionary<string, List<string>>() {
-               { "PC", new List<string> { "パーソナル コンピュータ", "プログラム カウンタ", } },
-               { "CD", new List<string> { "コンパクト ディスク", "キャッシュ ディスペンサー", } },
-            };
 
-            // ディクショナリに追加
-            var key = "EC";
-            var value = "電子商取引";
-            if (dict.ContainsKey(key)) {
-                dict[key].Add(value);
-            } else {
-                dict[key] = new List<string> { value };
-            }
-
-            // ディクショナリの内容を列挙
-            foreach (var item in dict) {
-                foreach (var term in item.Value) {
-                    Console.WriteLine("{0} : {1}", item.Key, term);
+        static void Exercise1_1(string text) {
+            //var dict = new Dictionary<char, int>();
+            var dict = new SortedDictionary<char, int>();
+            foreach (var ch in text) {
+                char upc = char.ToUpper(ch);
+                if ('A' <= upc && upc <= 'Z') {
+                    if (dict.ContainsKey(upc)) {
+                        //既に登録済み
+                        dict[upc]++;
+                    } else {
+                        //未登録
+                        dict[upc] = 1;
+                    }
                 }
+            }
+            foreach (var item in dict) {
+                Console.WriteLine($"{item.Key}:{item.Value}");
             }
         }
     }
